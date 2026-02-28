@@ -6,11 +6,11 @@
     CODE EDITOR 
  </Title>
    body{
-        background-color: #1a1a2e;
+        background-color: #0f0f0f;
         text-align: center;
         color: #ffffff;
         font-family: Arial, sans-serif;
-      
+        
     
       }
      .points{
@@ -29,7 +29,7 @@
        display: none;
        text-align: center;
        min-height: 100vh;
-       
+       margin-top: 15px;
     }
      .active { 
        display: block;
@@ -105,14 +105,65 @@
      height: 110px;
    
     }
+.load{
+  color: #00ff00;
+  font-family: monospace;
+}
+
+.loader-box {
+  margin-top: 200px;
+}
+
+.bar {
+  width: 300px;
+  height: 20px;
+  background: #222;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00ff88, #00ccff);
+  border-radius: 20px;
+  animation: loadBar 3s linear forwards;
+}
+
+
+@keyframes loadBar {
+  from { width: 0%; }
+  to { width: 100%; }
+}
   
   <Style>
   </Style>
  </Head>
  <Body>
-  <Div id="home" class=" active page">
+   <div id="loading" class="page active">
+      <img src="Logo.png" alt="logo" width="192" height="192">
+   <br>
+   <div class="loader-box">
+    
+    <div class="bar">
+      <div class="progress"></div>
+    </div>
+   <DIV class="load">
+   <h4>LOADING...</h4>
+   </div>
+  </div>
+   <footer>
+     <P> &0169; 2026 HARDIK AWANA. All rights reserved.</p>
+        <Br>
+        
+        <Br> <br>
+   <footer>
+   
+</div>
+  <Div id="home" class=" page">
    <div class="head">
-    <H1><B>NAME</B></H1>
+    <H1><B>HAproX IDE</B></H1>
     <Br>
     <Br>
    </div>
@@ -126,11 +177,8 @@
      <Hr>
      <Br>
       <Footer>
-        <P> &0169; HA. All rights reserved.</p>
-        <Br>
-        <Hr>
-        <Br> <br>
-        <P>Suggest us on <a href="https://github.com/Hardik30102010/XYZ-.git >GitHub</a>.</p>
+      
+        <P>Suggest us on <a href="https://github.com/Hardik30102010/CODE-EDITOR-/tree/main" >GitHub</a>.</p>
    <Br>
       </Footer>
    </Div>
@@ -163,7 +211,11 @@
   const el = document.querySelector('[value="T"]');
   navigator.clipboard.writeText(el.value || el.innerText);
 }
+   let progressBar = document.querySelector(".progress");
 
+progressBar.addEventListener("animationend", function() {
+  showPage("home");
+});
   </Script>
  </Body>
   </html>
