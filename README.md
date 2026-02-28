@@ -1,3 +1,3 @@
 # CODE EDITOR
 ***
-![logo](logo.png)
+![logo](Logo.png)
