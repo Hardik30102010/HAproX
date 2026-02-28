@@ -1,108 +1,73 @@
 <html>
 <head>
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="         
+  <meta name="theme-color" content="#0f0f0f">
   <title>CODE EDITOR</title>
   <style>
     body {
-      background-color:         
+      background-color: #0f0f0f;
       text-align: center;
-      color:         
+      color: #ccc;
       font-family: Arial, sans-serif;
+      margin: 0;
     }
-    .points {
-      text-align: left;
-    }
+    .points { text-align: left; }
     footer {
-      background-color:         
+      background-color: #1a1a1a;
       padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
     }
     .head {
-      background-color:         
+      background-color: #1a1a1a;
       padding-top: 50px;
+      padding-bottom: 20px;
     }
     .page {
       display: none;
       text-align: center;
       min-height: 100vh;
-      margin-top: 15px;
     }
-    .active {
-      display: block;
+    .active { display: block; }
+    textarea {
+      width: 80%;
+      height: 200px;
+      background: #222;
+      color: #00ff00;
+      border: 1px solid #444;
+      padding: 10px;
+      margin-top: 20px;
     }
     button {
-      text-align: center;
       margin: 10px;
       padding: 10px 20px;
       font-size: 18px;
       cursor: pointer;
       border-radius: 10px;
-      border: solid 2px         
-      background-color:         
+      border: solid 2px #00ff00;
+      background-color: #222;
       color: white;
       transition: transform 0.2s;
     }
     button:hover {
-      border: solid 3px         
+      border: solid 3px #00ff00;
       transform: scale(1.1);
     }
     hr {
       border: none;
-      border-top: 2px solid      
+      border-top: 2px solid #333;
       width: 100%;
     }
-    a:link, a:visited {
-      color:         
-      text-decoration: underline;
-      font-weight: normal;
-      cursor: pointer;
-    }
-    a:hover, a:active {
-      color:         
-      font-weight: bold;
-    }
-    h3:hover {
-      transform: rotate(360deg);
-      transition: 3s;
-      cursor: default;
-    }
-    h1:hover {
-      transform: rotateY(360deg);
-      transition: 5s;
-      cursor: default;
-    }
-    p {
-      cursor: default;
-    }
-    .home-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-    .home-buttons button {
-      width: 220px;
-      height: 130px;
-    }
-    .law-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-    .law-buttons button {
-      width: 200px;
-      height: 110px;
-    }
-    .load {
-      color:         
-      font-family: monospace;
-    }
-    .loader-box {
-      margin-top: 200px;
-    }
+    a:link { color: blue; text-decoration: underline; }
+    a:visited { color: purple; }
+    a:hover, a:active { font-weight: bold; }
+    .load { color: #00ff00; font-family: monospace; }
+    .loader-box { margin-top: 50px; }
     .bar {
       width: 300px;
       height: 20px;
-      background:      
+      background: #333;
       margin: 20px auto;
       border-radius: 20px;
       overflow: hidden;
@@ -110,60 +75,42 @@
     .progress {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg,                   
+      background: #00ff00;
       border-radius: 20px;
       animation: loadBar 3s linear forwards;
     }
-    @keyframes loadBar {
-      from {
-        width: 0%;
-      }
-      to {
-        width: 100%;
-      }
-    }
+    @keyframes loadBar { from { width: 0%; } to { width: 100%; } }
   </style>
 </head>
 <body>
   <div id="loading" class="page active">
-    <img src="Logo.png" alt="logo" width="192" height="192">
-    <br>
-    <div class="loader-box">
-      <div class="bar">
-        <div class="progress"></div>
-      </div>
-      <div class="load">
-        <h4>LOADING...</h4>
-      </div>
+    <div style="margin-top:100px;">
+        <img src="Logo.png" alt="logo" width="100" height="100" style="background:#333;">
+        <div class="loader-box">
+          <div class="bar"><div class="progress"></div></div>
+          <div class="load"><h4>LOADING...</h4></div>
+        </div>
     </div>
-    <footer>
-      <p>&copy; 2026 HARDIK AWANA. All rights reserved.</p>
-    </footer>
   </div>
   <div id="home" class="page">
     <div class="head">
-      <h1><b>HAproX IDE</b></h1>
-      <br>
-      <br>
+      <h1>HAproX IDE</h1>
     </div>
     <hr>
+    <textarea id="T" placeholder="Type your code here..."></textarea>
     <div class="home-buttons">
-      <button onclick="showPage('id')">button</button>
-      <button onclick="showPage('id')">button</button>
-      <button onclick="showPage('id')">button</button>
-      <br>
-      <br>
-      <hr>
-      <br>
+      <button onclick="downloadText()">Download</button>
+      <button onclick="copyT()">Copy Code</button>
     </div>
     <footer>
-      <p>Suggest us on <a href="https://github.com/Hardik30102010/CODE-EDITOR-/tree/main">GitHub</a>.</p>
+      <p>Suggest us on <a href="https://github.com">GitHub</a>.</p>
     </footer>
   </div>
   <script>
     function showPage(id) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+      const target = document.getElementById(id);
+      if(target) target.classList.add('active');
     }
     function downloadText() {
       const text = document.getElementById("T").value;
@@ -176,14 +123,13 @@
       URL.revokeObjectURL(url);
     }
     function copyT() {
-      const el = document.querySelector('[value="T"]');
-      navigator.clipboard.writeText(el.value || el.innerText);
+      const el = document.getElementById("T");
+      navigator.clipboard.writeText(el.value);
+      alert("Code copied!");
     }
-    let progressBar = document.querySelector(".progress");
-    progressBar.addEventListener("animationend", function() {
+    document.querySelector(".progress").addEventListener("animationend", () => {
       showPage("home");
     });
   </script>
 </body>
-    </html>
-    
+</html>
