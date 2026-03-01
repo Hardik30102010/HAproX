@@ -233,7 +233,18 @@
   
   document.getElementById("T").style.fontSize = size + "px";
 }
+    function runCode() {
+  const html = document.getElementById("html").value;
+  const css = "<style>" + document.getElementById("css").value + "</style>";
+  const js = "<script>" + document.getElementById("js").value + "<\/script>";
+  document.getElementById("output").srcdoc = html + css + js;
+}
 
+document.querySelectorAll("textarea").forEach(area => {
+  area.addEventListener("input", runCode);
+});
+
+runCode();
   </script>
 </body>
 </html>
