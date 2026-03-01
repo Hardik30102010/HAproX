@@ -30,6 +30,11 @@
       padding-top: 50px;
       padding-bottom: 20px;
     }
+    select{
+      color: #fff;
+      background-color: #222;
+      
+    }
     .page {
       display: none;
       text-align: center;
@@ -41,6 +46,10 @@
       color: #00ff00;
       border: 1px solid #444;
       padding: 10px;
+         
+      min-height: calc(100vh - 40px); 
+      min-width: 100vw;
+      font-size: 16px;
     
     }
     button {
@@ -77,11 +86,7 @@
       font-weight: bold;
       
       }
-    .text{
-      min-height: calc(100vh - 40px); 
-      min-width: 100vw;
-      font-size: 16px;
-    }
+
     nav{
       height: 40px;
       background-color: #000000;
@@ -145,7 +150,7 @@
     </footer>
   </div>
   <div id="code" class="page">
-    
+    <div class="head">
       <nav>
         <button onclick="showPage('home')">BACK</button>
              <button onclick="downloadText()">Download</button>
@@ -158,9 +163,10 @@
   <option value="24">24px</option>
     </select>
       </nav>
-    <div class="text">
-    <textarea id="T" placeholder="Type your code here..."></textarea>
     </div>
+    <br>
+    <textarea id="T" placeholder="Type your code here..."></textarea>
+    
     
 
   </div>
