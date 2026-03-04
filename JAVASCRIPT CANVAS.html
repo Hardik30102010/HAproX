@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HaproX - Canvas Mode</title>
+
+<style>
+body{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+  background:#0f172a;
+  color:white;
+  font-family:monospace;
+}
+
+/* Top Note */
+#note{
+  background:#1e293b;
+  padding:10px;
+  text-align:center;
+  font-size:14px;
+  border-bottom:2px solid #00ff88;
+  color:#00ff88;
+}
+
+/* Main Layout */
+#main{
+  display:flex;
+  flex:1;
+}
+
+textarea{
+  width:50%;
+  background:#111827;
+  color:#00ff88;
+  border:none;
+  outline:none;
+  padding:15px;
+  font-size:14px;
+  resize:none;
+}
+
+canvas{
+  width:50%;
+  background:white;
+}
+</style>
+</head>
+
+<body>
+
+<div id="note">
+  
+ Canvas Mode — Use <b>canvas</b> to draw. Example: canvas.fillRect(x, y, width, height);
+</div>
+
+<div id="main">
+<textarea id="code">
+canvas.fillStyle = "red";
+canvas.fillRect(50,50,150,100);
+</textarea>
+
+<canvas id="board" width="600" height="400"></canvas>
+</div>
+<div>
+  <input type="color" id="picker">
+<p id="hexText">#000000</p>
+
+<script>
+let picker = document.getElementById("picker");
+let hexText = document.getElementById("hexText");
+
+picker.oninput = function(){
+  hexText.innerText = picker.value;
+};
+</script>
+</div>
+<script>
+let code = document.getElementById("code");
+let board = document.getElementById("board");
+let canvas = board.getContext("2d");
+
+function run(){
+  canvas.clearRect(0,0,board.width,board.height);
+  try{
+    eval(code.value);
+  }catch(e){}
+}
+
+code.oninput = run;
+run();
+</script>
+
+</body>
+                               </html>
