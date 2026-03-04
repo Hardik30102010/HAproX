@@ -181,7 +181,7 @@
     </footer>
   </div>
   <div id="code" class="page">
-    <div class="head">
+    
       <nav>
         <button onclick="showPage('home')">BACK</button>
              <button onclick="downloadText()">Download</button>
@@ -193,9 +193,9 @@
   <option value="20">20px</option>
   <option value="24">24px</option>
     </select>
-        <INPUT TYPE="TEXT" NAME="PRONAME" VALUE="HAproX.txt">
+        <INPUT TYPE="TEXT" NAME="PRONAME" VALUE="HAproX.txt" id="proname">
       </nav>
-    </div>
+    
     <br>
     <textarea id="T" placeholder="Type your code here..."></textarea>
     
@@ -228,12 +228,13 @@
     document.getElementById(id).classList.add('active');
   }
     function downloadText() {
+      var proname = document.getElmentById("proname").value;
       const text = document.getElementById("T").value;
       const blob = new Blob([text], { type: "text/plain" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = "code_file.txt";
+      link.download = proname + ".txt";
       link.click();
       URL.revokeObjectURL(url);
     }
