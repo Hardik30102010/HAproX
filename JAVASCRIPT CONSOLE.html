@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HaproX JS Runner</title>
+<style>
+body{
+  margin:0;
+  display:flex;
+  height:100vh;
+  background:#0f172a;
+  font-family:Arial;
+}
+textarea{
+  width:50%;
+  background:#111827;
+  color:#00ffcc;
+  border:none;
+  outline:none;
+  padding:15px;
+  font-family:monospace;
+  font-size:14px;
+}
+iframe{
+  width:50%;
+  border:none;
+  background:black;
+}
+</style>
+</head>
+<body>
+
+<textarea id="editor">
+var wall = 10;
+var door = 5;
+
+console.log("Total:", wall + door);
+</textarea>
+
+<iframe id="runner"></iframe>
+
+<script>
+const editor = document.getElementById("editor");
+const iframe = document.getElementById("runner");
+
+function runCode(){
+
+  const userCode = editor.value;
+
+  iframe.srcdoc = `
+    <html>
+    <body style="color:#00ff00; background:black; font-family:monospace;">
+    <script>
+
+    // Custom console.log
+    console.log = function(...args){
+      document.body.innerHTML += args.join(" ") + "<br>";
+    };
+
+    try{
+      ${userCode}
+    }catch(error){
+      document.body.innerHTML += "<span style='color:red'>" + error + "</span>";
+    }
+
+    <\/script>
+    </body>
+    </html>
+  `;
+}
+
+editor.addEventListener("input", runCode);
+
+runCode();
+</script>
+
+</body>
+</html>
