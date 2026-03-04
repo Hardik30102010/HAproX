@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: lightgray;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<div class="dropdown">
+  <button>Mode ▼</button>
+  <div class="dropdown-content">
+    <button>Full Web</button><br>
+    <button>JS Console</button><br>
+    <button>JS Canvas</button>
+  </div>
+</div>
+
+</body>
+</html>
