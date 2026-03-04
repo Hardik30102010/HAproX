@@ -228,7 +228,7 @@
     document.getElementById(id).classList.add('active');
   }
     function downloadText() {
-      var proname = document.getElmentById("proname").value;
+      const proname = document.getElementById("proname").value;
       const text = document.getElementById("T").value;
       const blob = new Blob([text], { type: "text/plain" });
       const url = URL.createObjectURL(blob);
