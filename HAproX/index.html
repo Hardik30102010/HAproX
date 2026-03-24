@@ -203,7 +203,7 @@
   <option value="24">24px</option>
     </select>
         <INPUT TYPE="TEXT" NAME="PRONAME" VALUE="HAproX" id="proname">
-    <select id="extensionPicker">
+    <select id="exten">
     <option value=".bat">.bat</option>
     <option value=".bash">.bash</option>
     <option value=".c">.c</option>
@@ -272,13 +272,14 @@
     document.getElementById(id).classList.add('active');
   }
     function downloadText() {
+      const exten = document.getElementById("exten").value;
       const proname = document.getElementById("proname").value;
       const text = document.getElementById("T").value;
       const blob = new Blob([text], { type: "text/plain" });
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = proname + ".txt";
+      link.download = proname + exten;
       link.click();
       URL.revokeObjectURL(url);
     }
