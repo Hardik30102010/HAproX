@@ -23,6 +23,7 @@
   width: 50%;
   border: none;
   background: white;
+  min-height: calc(100vh - 40px);  
       }
     .editor {
   width: 50%;
@@ -44,6 +45,7 @@
       background-color: #1a1a1a;
       padding-top: 50px;
       padding-bottom: 20px;
+      border-bottom: solid 2px #333;
     }
     select {
       margin: 10px;
@@ -66,7 +68,9 @@
       text-align: center;
       min-height: 100vh;
     }
-    .active { display: block; }
+    .active {
+      display: block;
+    }
     textarea {
       background: #222;
       color: #00ff00;
@@ -115,13 +119,13 @@
       font-weight: bold;
       
       }
-     .home-buttons { 
+     .h-bttn { 
       align-items: center;
       gap: 30px;
       
   }
 
-    .home-buttons button {
+    .h-bttn button {
      width: 220px;
      height: 130px;
     }
@@ -163,7 +167,7 @@
 <body>
   <div id="loading" class="page active">
     <div style="margin-top:100px;">
-        <img src="Logo.png" alt="logo" height="1024px" width="1024px">
+        <img src="Logo.png" alt="logo" height="500" width="500">
         <div class="loader-box">
           <div class="bar"><div class="progress"></div></div>
           <div class="load"><h4>LOADING...</h4></div>
@@ -177,13 +181,21 @@
     <div class="head">
       <h1><B>HAproX IDE</B></h1>
     </div>
-    <hr>
+    
     <br>
     <br>
     <br>
+    <div class="h-bttn">
     <button onclick="showPage('code')"> CODE/TEXT EDITING </button>
-    <BR>
-    <button onclick="showPage('live')"> START CODING </button>
+    
+    
+        <button onclick="showPage('me')">HTML+CSS+JAVASCRIPT</button>
+    <br>
+      
+    <br>
+    <button onclick="showPage('jscon')">JAVASCRIPT CONSOLE</button>
+    <button onclick="showPage('jscan')">JAVASCRIPT CANVAS</button>
+    </div>
     
     <footer>
       <p>Suggest us on <a href="https://github.com/Hardik30102010/HAproX.git" target="_blank">GitHub</a></p>
@@ -241,21 +253,7 @@
     
 
   </div>
-  <div id="live" class="page">
-    <nav><div class="points"><button onclick="showPage('home')">back</button>
-    </div> </nav>
-    <br>
-    <header><strong>START CODING</strong></header>
-    <br>
-    <br>
-    <button onclick="showPage('me')">HTML+CSS+JAVASCRIPT</button>
-    <br>
-      
-    <br>
-    <button onclick="showPage('jscon')">JAVASCRIPT CONSOLE</button>
-    <button onclick="showPage('jscan')">JAVASCRIPT CANVAS</button>
- 
-  </div>
+
   <div id="me" class="page">
     <div class="main">
   <div class="editor">
