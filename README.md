@@ -1,3 +1,3 @@
-# CODE EDITOR
+# HAproX IDE 
 ***
 ![logo](Logo.png)
