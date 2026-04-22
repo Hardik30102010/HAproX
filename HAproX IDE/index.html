@@ -293,7 +293,8 @@ canvas{
     <option value=".xml">.xml</option>
     <option value=".yaml">.yaml</option>
     </select>
-        <button onclick="s
+          <input type="color" id="picker">
+<p id="hexText">#000000</p>
       </nav>
     
     <br>
@@ -318,6 +319,8 @@ canvas{
 <div id="note">
   
  Canvas Mode — Use <b>canvas</b> to draw. Example: canvas.fillRect(x, y, width, height);
+  <br>  <input type="color" id="picker">
+<p id="hexText">#000000</p>
 </div>
 
 <div id="main">
@@ -328,9 +331,8 @@ canvas.fillRect(50,50,150,100);
 
 <canvas id="board" width="600" height="400"></canvas>
 </div>
-<div>
-  <input type="color" id="picker">
-<p id="hexText">#000000</p>
+
+  
 
 <script>
 let picker = document.getElementById("picker");
@@ -340,7 +342,7 @@ picker.oninput = function(){
   hexText.innerText = picker.value;
 };
 </script>
-</div>
+
     
   </div>
   <div id="jscon" class="page">
