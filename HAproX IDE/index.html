@@ -158,7 +158,14 @@
   color:#00ff88;
 }
 
-
+#consol{
+  
+}
+#consol iframe{
+  width:50%;
+  border:none;
+  background:black;
+  }  
 #main-canvas{
   display:flex;
   flex:1;
@@ -345,8 +352,51 @@ picker.oninput = function(){
 
     
   </div>
+  
   <div id="jscon" class="page">
-    
+    <textarea id="editor">
+var a = 10;
+var b = 5;
+
+console.log("Total:", a + b);
+</textarea>
+
+<iframe id="runner"></iframe>
+
+<script>
+const editor = document.getElementById("editor");
+const iframe = document.getElementById("runner");
+
+function runCode(){
+
+  const userCode = editor.value;
+
+  iframe.srcdoc = `
+    <html>
+    <body style="color:#00ff00; background:black; font-family:monospace;">
+    <script>
+
+    // Custom console.log
+    console.log = function(...args){
+      document.body.innerHTML += args.join(" ") + "<br>";
+    };
+
+    try{
+      ${userCode}
+    }catch(error){
+      document.body.innerHTML += "<span style='color:red'>" + error + "</span>";
+    }
+
+    <\/script>
+    </body>
+    </html>
+  `;
+}
+
+editor.addEventListener("input", runCode);
+
+runCode();
+  </script>
   </div>
   <script>
     function showPage(id) {
